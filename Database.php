@@ -213,15 +213,11 @@ _END;
 	public function getAllModelsAndBrands(){
 		$sql="SELECT brand,model FROM CarModels LEFT JOIN CarBrands ON CarModels.idBrand=CarBrands.idBrand;";
 	}
-	public function getCarFromIdClient($value){
+
+	public function getCarFromIdClient($values)
+	{
 		$idClient=$this->sqlite_fix_string($values['idClient']);
-		$sql='SELECT * FROM Clients LEFT OUTER JOIN Client_Car ON (Clients.idClient=Client_Car.idClient) INNER JOIN Cars ON (Client_Car.idCar=Cars.idCar) WHERE Clients.idClient=?';
-		$sql=<<<_END
-	SELECT * FROM Clients 
-		LEFT OUTER JOIN Client_Car ON (Clients.idClient=Client_Car.idClient) 
-		INNER JOIN Cars ON (Client_Car.idCar=Cars.idCar) 
-		WHERE Clients.idClient=$idClient
-_END;
+		$sql = 'SELECT * FROM Clients LEFT OUTER JOIN Client_Car ON (Clients.idClient=Client_Car.idClient) INNER JOIN Cars ON (Client_Car.idCar=Cars.idCar) WHERE Clients.idClient=$idClient';
 		return $this->database->query($sql);
 	}
 }

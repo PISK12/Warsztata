@@ -35,17 +35,7 @@
 			$content=$content."<p>".'phoneNumberClient'.": ".$table['phoneNumberClient']."</p>";
 			$content=$content."<a href="."addCar.php?idClient=".$table['idClient'].">Add Car"."</a>";
 		}
-		$content="<br><br>";
-		$results=$database->getCarFromIdClient($_GET);
-		while ($table = $results->fetchArray(SQLITE3_ASSOC)) {
-			$content=$content."<br>";
-			$content=$content."<p>".'idClient'.": ".$table['idClient']."</p>";
-			$content=$content."<p>".'firstName'.": ".$table['firstName']."</p>";
-			$content=$content."<p>".'lastName'.": ".$table['lastName']."</p>";
-			$content=$content."<p>".'phoneNumberClient'.": ".$table['phoneNumberClient']."</p>";
-			$content=$content."<a href="."addCar.php?idClient=".$table['idClient'].">Add Car"."</a>";
-		}
+		$content = $content = $content . "<br><br>";
 	}
-
 	template($content);
 ?>
