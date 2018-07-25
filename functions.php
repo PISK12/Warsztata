@@ -110,7 +110,6 @@
 	}
 
 	function fillFakeClient_Car($database){
-		fillFakeCars($database);
 
 		$sql='SELECT idClient FROM Clients';
 		$allIdCilents=[];
@@ -135,6 +134,40 @@
 			$database->connectClient_Car(array("idClient"=>$idCilent,"idCar"=>$idCar));
 		}
 
+	}
+
+	function fillFakeDiary($database, $howMany = 5)
+	{
+		$faker = Faker\Factory::create();
+		$sql = 'SELECT idClient FROM Clients';
+		$allIdCilents = [];
+		$result = $database->database->query($sql);
+		while ($table = $result->fetchArray(SQLITE3_ASSOC)) {
+			$allIdCilents[] = $table['idClient'];
+		}
+		date_default_timezone_set('Europe/London');
+		foreach ($allIdCilents as $idClient) {
+			$lastDataTime = new DateTime('1990-08-03 14:52:10');
+			$dataTime = $lastDataTime;
+			$allIdCars = [];
+			$result = $database->getAllInformationAboutCarByIdClient($idClient);
+			while ($table = $result->fetchArray(SQLITE3_ASSOC)) {
+				$allIdCars[] = $table['idCar'];
+			}
+			foreach ($allIdCars as $idCar) {
+				for ($i = rand(1, $howMany); $i > 0; $i--) {
+					while ($lastDataTime >= $dataTime) {
+						$dataTime = $faker->dateTime($max = 'now', $timezone = null);
+
+					}
+					$lastDataTime = $dataTime;
+					$dataTime = date_format($dataTime, 'Y-m-d H:i:s');
+					$values = array('idCar' => $idCar, 'idClient' => $idClient, 'title' => $faker->sentence, 'createDate' => $dataTime, 'status' => 'done', 'comments' => $faker->sentence, 'preference' => $faker->sentence . " " . $faker->sentence, 'price' => rand(2, 50) * 100);
+					var_dump($values);
+					$database->addDiary($values);
+				}
+			}
+		}
 	}
 
 ?>

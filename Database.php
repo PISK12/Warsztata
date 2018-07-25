@@ -63,24 +63,15 @@ class Database{
 	
 	CREATE TABLE IF NOT EXISTS `Diary` (
 	  `idDiary`	INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+	  `idCar`	INTEGER NOT NULL,
+	  `idClient`	INTEGER NOT NULL,
 	  `title`	TEXT NOT NULL,
 	  `createDate`	NUMERIC NOT NULL,
 	  `status`	TEXT NOT NULL,
-	  `comment`	TEXT,
+	  `comments`	TEXT,
 	  `preference`	TEXT,
-	  `price`	INTEGER
-	);
-	
-	CREATE TABLE IF NOT EXISTS `Diary_Client` (
-	  `idDiary` INTEGER NOT NULL,
-	  `idClient`	INTEGER NOT NULL,
-	  FOREIGN KEY(`idDiary`) REFERENCES `Diary`(`idDiary`),
-	  FOREIGN KEY(`idClient`) REFERENCES `Clients`(`idClient`)
-	);
-	CREATE TABLE IF NOT EXISTS `Diary_Car` (
-	  `idDiary` INTEGER NOT NULL,
-	  `idCar`	INTEGER NOT NULL,
-	  FOREIGN KEY(`idDiary`) REFERENCES `Diary`(`idDiary`),
+	  `price`	INTEGER,
+	  FOREIGN KEY(`idClient`) REFERENCES `Clients`(`idClient`),
 	  FOREIGN KEY(`idCar`) REFERENCES `Cars`(`idCar`)
 	);
 _END;
@@ -91,8 +82,10 @@ _END;
 
 	private function sqlite_fix_string($string){
 		if(get_magic_quotes_gpc()) $string=stripslashes($string);
-		$string=trim($string);
-		return $this->database->escapeString($string);
+		if (is_string($string)) {
+			$string = trim($string);
+			return $this->database->escapeString($string);
+		} else return $string;
 	}
 
 	public function addNewClient($values){
@@ -139,7 +132,7 @@ _END;
 
 	public function addCar($values){
 		$vimCar=$this->sqlite_fix_string($values['vimCar']);
-		$idCarModel=$this->sqlite_fix_string($values['idModel']);
+		$idModel = $this->sqlite_fix_string($values['idModel']);
 		$bodyType=$this->sqlite_fix_string($values['bodyType']);
 		$power=$this->sqlite_fix_string($values['power']);
 		$cylinderCapacity=$this->sqlite_fix_string($values['cylinderCapacity']);
@@ -157,7 +150,7 @@ _END;
 _END;
 		$stmt=$this->database->prepare($sql);
 		$stmt->bindParam(1,$vimCar);
-		$stmt->bindParam(2,$idCarModel);
+		$stmt->bindParam(2, $idModel);
 		$stmt->bindParam(3,$bodyType);
 		$stmt->bindParam(4,$power);
 		$stmt->bindParam(5,$cylinderCapacity);
@@ -167,6 +160,35 @@ _END;
 		$stmt->bindParam(9,$color);
 		$stmt->bindParam(10,$year);
 		$stmt->bindParam(11,$registrationNumber);
+		$stmt->execute();
+		$stmt->close();
+	}
+
+	public function addDiary($values)
+	{
+		$idCar = $this->sqlite_fix_string($values['idCar']);
+		$idClient = $this->sqlite_fix_string($values['idClient']);
+		$title = $this->sqlite_fix_string($values['title']);
+		$createDate = $this->sqlite_fix_string($values['createDate']);
+		$status = $this->sqlite_fix_string($values['status']);
+		$comment = $this->sqlite_fix_string($values['comments']);
+		$preference = $this->sqlite_fix_string($values['preference']);
+		$price = $this->sqlite_fix_string($values['price']);
+		$sql = <<<_END
+		INSERT INTO Diary(idCar,idClient,
+			title,createDate,status,
+			comments,preference,price) 
+			VALUES(?,?,?,?,?,?,?,?)
+_END;
+		$stmt = $this->database->prepare($sql);
+		$stmt->bindParam(1, $idCar);
+		$stmt->bindParam(2, $idClient);
+		$stmt->bindParam(3, $title);
+		$stmt->bindParam(4, $createDate);
+		$stmt->bindParam(5, $status);
+		$stmt->bindParam(6, $comments);
+		$stmt->bindParam(7, $preference);
+		$stmt->bindParam(8, $price);
 		$stmt->execute();
 		$stmt->close();
 	}
@@ -218,7 +240,6 @@ _END;
 	public function getAllInformationAboutCarByIdClient($values)
 	{
 		$idClient = $this->sqlite_fix_string($values);
-		//$sql = 'SELECT * FROM Clients LEFT OUTER JOIN Client_Car ON (Clients.idClient=Client_Car.idClient) INNER JOIN Cars ON (Client_Car.idCar=Cars.idCar) WHERE Clients.idClient=$idClient';
 		$sql = <<<_END
 			SELECT * FROM Clients 
 			LEFT OUTER JOIN Client_Car ON (Clients.idClient=Client_Car.idClient) 

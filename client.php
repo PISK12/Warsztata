@@ -51,6 +51,7 @@
 			$content = $content . "<p>" . 'year' . ": " . $table['year'] . "</p>";
 			$content = $content . "<p>" . 'registrationNumber' . ": " . $table['registrationNumber'] . "</p>";
 		}
+
 	}
 	template($content);
 ?>
