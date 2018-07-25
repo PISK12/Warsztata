@@ -16,9 +16,9 @@
 
 <?php
 	$content=<<<_END
-	<form method='get' action='client.php'>
+	<form method='get' action='clients.php'>
 	  Search:<br>
-      <input type='text' name='query'><br><br>
+      <input type='text' name='query'><br>
       <input type='submit' value='submit'>
     </form>
 _END;

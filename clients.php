@@ -14,18 +14,47 @@
 ?>
 
 <?php
+	function getRow($table)
+	{
+		$html = "";
+		$html = $html . "<tr>";
+		$html = $html . "<td>" . $table['idClient'] . "</td>";
+		$html = $html . "<td>" . $table['firstName'] . "</td>";
+		$html = $html . "<td>" . $table['lastName'] . "</td>";
+		$html = $html . "<td>" . $table['phoneNumberClient'] . "</td>";
+		$html = $html . "<td><a href=" . "client.php?idClient=" . $table['idClient'] . ">GO" . "</a></td>";
+		$html = $html . "</tr>";
+		return $html;
+	}
+
 	$database=new Database($fileNameDatabase);
 	$html="";
-	$results=$database->getAllInformationAboutClients();
+	$results = $database->getInformationAboutAllClients();
+
+	$guery = "";
+	if (isset($_GET['query'])) {
+		$guery = strtolower($_GET['query']);
+		$guery = trim($guery);
+	}
 	while ($table = $results->fetchArray(SQLITE3_ASSOC)) {
-		$html=$html."<tr>";
-		$html=$html."<td>".$table['idClient']."</td>";
-		$html=$html."<td>".$table['firstName']."</td>";
-		$html=$html."<td>".$table['lastName']."</td>";
-		$html=$html."<td>".$table['phoneNumberClient']."</td>";
-		$html=$html."<td><a href="."client.php?idClient=".$table['idClient'].">GO"."</a></td>";
-		$html=$html."</tr>";
+		if ($guery) {
+			if ($guery == $table['idClient']) {
+				$html = $html . getRow($table);
+			} elseif ($guery == strtolower($table['firstName'])) {
+				$html = $html . getRow($table);
+			} elseif ($guery == strtolower($table['lastName'])) {
+				$html = $html . getRow($table);
+			} elseif ($guery == strtolower($table['firstName'] . " " . $table['lastName'])) {
+				$html = $html . getRow($table);
+			} elseif ($guery == strtolower($table['lastName'] . " " . $table['firstName'])) {
+				$html = $html . getRow($table);
+			} elseif ($guery == $table['phoneNumberClient']) {
+				$html = $html . getRow($table);
+			}
+		} else $html = $html . getRow($table);
+
 	};
+
 	$content=<<<_END
 	<table>
 		<tr>

@@ -187,7 +187,8 @@ _END;
 		return $this->database->query($sql);
 	}
 
-	public function getAllInformationAboutClients(){
+	public function getInformationAboutAllClients()
+	{
 		$sql=<<<_END
 SELECT Clients.idClient,Clients.firstName,Clients.lastName,PhoneNumberClients.phoneNumberClient 
 				FROM Clients 
@@ -214,10 +215,17 @@ _END;
 		$sql="SELECT brand,model FROM CarModels LEFT JOIN CarBrands ON CarModels.idBrand=CarBrands.idBrand;";
 	}
 
-	public function getCarFromIdClient($values)
+	public function getAllInformationAboutCarByIdClient($values)
 	{
-		$idClient=$this->sqlite_fix_string($values['idClient']);
-		$sql = 'SELECT * FROM Clients LEFT OUTER JOIN Client_Car ON (Clients.idClient=Client_Car.idClient) INNER JOIN Cars ON (Client_Car.idCar=Cars.idCar) WHERE Clients.idClient=$idClient';
+		$idClient = $this->sqlite_fix_string($values);
+		//$sql = 'SELECT * FROM Clients LEFT OUTER JOIN Client_Car ON (Clients.idClient=Client_Car.idClient) INNER JOIN Cars ON (Client_Car.idCar=Cars.idCar) WHERE Clients.idClient=$idClient';
+		$sql = <<<_END
+			SELECT * FROM Clients 
+			LEFT OUTER JOIN Client_Car ON (Clients.idClient=Client_Car.idClient) 
+			INNER JOIN Cars ON (Client_Car.idCar=Cars.idCar) 
+			WHERE Clients.idClient=$idClient
+_END;
+
 		return $this->database->query($sql);
 	}
 }
