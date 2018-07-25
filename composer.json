@@ -1,0 +1,6 @@
+{
+    "require": {
+        "fzaninotto/faker": "^1.8",
+        "propel/propel": "~3.0@dev"
+    }
+}

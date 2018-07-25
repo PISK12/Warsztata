@@ -1,0 +1,315 @@
+﻿Aaglander
+Abarth
+Abbott
+AC Schnitzer
+AIL
+Air car
+Aixam
+Alfa Romeo
+Alvis
+American Motors Corporation
+Amilcar
+Amphicar
+Amuza
+Apollo Automobil
+Ariel Ltd
+ARO
+Arrinera
+Ascari Cars
+Aston Martin
+Asüna
+Audi
+Automobile Craiova
+Automobiles Dallas
+Automobiles Grégoire
+Automobiles René Bonnet
+Auverland
+Avions Voisin
+AwtoWAZ
+Bahman Group
+Ballot
+Beardmore
+Bedford Vehicles
+Beijing Automobile Works
+Beijing Jeep
+Beiqi Foton Motor
+Bentley
+Bignan
+Bitter
+BMW
+Bolwell
+Borgward
+Brabus
+Brasier
+Bremach
+Brilliance
+Bristol Cars
+British Motor Holdings
+Bronto
+Bugatti
+Buick
+BYD Auto
+Cadillac
+Callaway Cars
+Carlsson Autotechnik
+Carrozzeria Fissore
+Caterham Cars
+Chalmers Motor Car Company
+Chamonix NG Cars
+Chang’an Automobile
+Chang’an Ford
+Chang’an Suzuki
+Changfeng Motor
+Changhe
+Chatenet Automobiles
+Chenard & Walcker
+Chevrolet
+Chrysler
+Citroën
+Cizeta
+Clément-Bayard
+Coast to Coast Street Rod
+Cottereau
+Crespi
+Dacia
+Dadi Auto
+DAF Trucks
+Daimler Motor Company
+Dangel
+De Dietrich
+De Dion-Bouton
+De La Chapelle
+De Tomaso
+Delage
+Delahaye
+Delaunay-Belleville
+DeLorean Motor Company
+Deutsch-Bonnet
+Dodge
+Dong A
+Dongfeng Motor
+DS Automobiles
+Duesenberg
+Dutton Cars
+Dux
+Eagle
+Elfin
+Elipsa
+ELVO
+Enzmann
+ESTfield
+Facel Vega
+Fargo
+Farman
+FAW Group
+FAW-Volkswagen
+Felber
+Ferrari
+Fiat
+Fiberfab
+Foers
+Force Motors
+Ford Motor Company
+Framo
+Fabryka Samochodów Osobowych
+GAZ
+Geely
+Gemballa
+Geo
+Giannini
+Ginetta
+GM Daewoo
+GMC
+Goggomobil
+Goliath
+GołAZ
+Gordini
+Gräf & Stift
+Grégoire
+Greppi
+Guangzhou Automobile Industry Group
+Hafei
+Heuliez
+Hindustan Motors
+Hinstin
+Holden
+Holden Special Vehicles
+Hope Motor Company
+Hotchkiss-Grégoire
+Hudson Motor Car Company
+Hupmobile
+Hurtan
+Hyundai Motor Company
+IATO
+IMV
+Inokom
+Invicta
+IPIM
+Iran Khodro
+Irmscher
+Isdera
+Isotta Fraschini
+Itala
+Jago
+Jaguar
+Jeep
+Jehle
+JerAZ
+Jiangling Motors
+Jinbei
+JM Design
+Jo-mobil
+K-1 Engineering
+Karmann
+KAwZ
+Kia Motors
+Kish Khodro
+Koenigsegg
+Lagonda
+Lamborghini
+Lancia
+Land Rover
+Laraki
+LaSalle
+LDV
+Le Zèbre
+Leyat
+LiAZ
+Lifan
+Lincoln Motor Company
+Lister Cars
+Lloyd
+Lola Cars
+Lorinser
+Lorraine-Dietrich
+Lotus Cars
+Łada
+ŁuAZ
+Magirus
+Magirus-Deutz
+Mahindra & Mahindra Limited
+MAN-VW
+Marcos
+Marlin
+Marotti
+Marussia Motors
+Maserati
+Matford
+Mathis
+McLaren Automotive
+Mebea
+Melex
+Melkus
+Mercedes-Benz
+Merkur
+Messier
+MG
+Mitsuoka
+Modellista
+Monteverdi
+Morattab
+Moretti
+Morgan Motor Company
+Mors
+Moskwicz
+Mosler
+Moteur Developpement International
+MTX
+NAMCO
+Nasr
+Noble Automotive
+Novitec
+NSU Motorenwerke
+ÖAF
+Oettinger Sportsystems
+Opel
+Otokar
+Packard
+Pagani Automobili
+Panhard
+Panoz
+Paris-Rhône
+Pars Khodro
+Partisan One
+Pegaso
+Perodua
+Peugeot
+Pierce-Arrow
+Porsche
+Portaro
+Praga
+Premier
+Proton
+Protos
+Puma Veículos e Motores
+Qoros
+Qvale
+Renault
+Renault Alpine
+Renault Samsung Motors
+RexeR
+Rīgas Autobusu Fabrika
+Rinspeed
+Rocar
+Roewe
+Rolls-Royce
+Rovin
+Russo-Bałt
+SAIC-GM-Wuling Automobile
+SAIPA
+Saleen
+Salmson
+Santana Motor
+SEAT
+SeAZ
+Shanghai Volkswagen
+Shelby SuperCars
+Shuanghuan
+Sizaire Frères
+Sizaire-Naudin
+Škoda Auto
+Smart
+Soueast Motors
+Spyker
+Spyker Cars
+SsangYong
+Statesman
+Steinmetz Opel Tuning
+Steyr 120
+Steyr-Daimler-Puch
+Stoewer
+Studebaker
+Stutz
+Swallow Coachbuilding Company
+Swaraj Mazda
+TagAZ
+Talbot-Darracq
+Thai Rung Union Car
+The London Taxi Company
+Think
+Tianjin Xiali
+Tofaş
+Tommy Kaira
+Toyota
+Trnavské automobilové závody
+Troller
+UAZ
+Ultima Sports
+Unimog
+UzDaewooAuto
+Vauxhall
+Vector Motors
+Velorex
+Venturi
+Volkswagen
+Volvo Car Corporation
+Westfield Sportscars
+Wiesmann
+Willys
+Wołżanin
+Xinkai
+Yulon
+Zamyad
+Zastava
+ZAZ
+Zxauto
