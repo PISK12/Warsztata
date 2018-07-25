@@ -228,5 +228,27 @@ _END;
 
 		return $this->database->query($sql);
 	}
+
+	public function getModelByIdModel($idModel)
+	{
+		$sql = <<<_END
+		SELECT model 
+		FROM CarModels 
+		WHERE idModel=$idModel
+_END;
+		$result = $this->database->query($sql);
+		return $result->fetchArray(SQLITE3_ASSOC)['model'];
+	}
+
+	public function getBrandByIdModel($idModel)
+	{
+		$sql = <<<_END
+ 		SELECT CarBrands.brand FROM CarModels 
+ 		INNER JOIN CarBrands ON (CarBrands.idBrand=CarModels.idBrand)
+		WHERE idModel=$idModel
+_END;
+		$result = $this->database->query($sql);
+		return $result->fetchArray(SQLITE3_ASSOC)['brand'];
+	}
 }
 

@@ -38,7 +38,8 @@
 		$results = $database->getAllInformationAboutCarByIdClient($_GET['idClient']);
 		while ($table = $results->fetchArray(SQLITE3_ASSOC)) {
 			$content = $content . "<br>";
-			$content = $content . "<p>" . 'idModel' . ": " . $table['idModel'] . "</p>";
+			$content = $content . "<p>" . 'Brand' . ": " . $database->getBrandByIdModel($table['idModel']) . "</p>";
+			$content = $content . "<p>" . 'Model' . ": " . $database->getModelByIdModel($table['idModel']) . "</p>";
 			$content = $content . "<p>" . 'vinCar' . ": " . $table['vinCar'] . "</p>";
 			$content = $content . "<p>" . 'bodyType' . ": " . $table['bodyType'] . "</p>";
 			$content = $content . "<p>" . 'power' . ": " . $table['power'] . "</p>";
