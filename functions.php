@@ -163,7 +163,6 @@
 					$lastDataTime = $dataTime;
 					$dataTime = date_format($dataTime, 'Y-m-d H:i:s');
 					$values = array('idCar' => $idCar, 'idClient' => $idClient, 'title' => $faker->sentence, 'createDate' => $dataTime, 'status' => 'done', 'comments' => $faker->sentence, 'preference' => $faker->sentence . " " . $faker->sentence, 'price' => rand(2, 50) * 100);
-					var_dump($values);
 					$database->addDiary($values);
 				}
 			}

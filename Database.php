@@ -193,6 +193,52 @@ _END;
 		$stmt->close();
 	}
 
+	public function editCar($values)
+	{
+		$idCar = $this->sqlite_fix_string($values['idCar']);
+		$vinCar = $this->sqlite_fix_string($values['vinCar']);
+		$idModel = $this->sqlite_fix_string($values['idModel']);
+		$bodyType = $this->sqlite_fix_string($values['bodyType']);
+		$power = $this->sqlite_fix_string($values['power']);
+		$cylinderCapacity = $this->sqlite_fix_string($values['cylinderCapacity']);
+		$fuel = $this->sqlite_fix_string($values['fuel']);
+		$transmission = $this->sqlite_fix_string($values['transmission']);
+		$driveType = $this->sqlite_fix_string($values['driveType']);
+		$color = $this->sqlite_fix_string($values['color']);
+		$year = $this->sqlite_fix_string($values['year']);
+		$registrationNumber = $this->sqlite_fix_string($values['registrationNumber']);
+		$sql = <<<_END
+		UPDATE Cars 
+		SET 
+			vinCar=$vinCar,
+			idModel=$idModel,
+			bodyType=,
+			power=,
+			cylinderCapacity=,
+			fuel=,
+			transmission=,
+			driveType=,
+			color=,
+			year=,
+			registrationNumber= 
+		WHERE idCar=$idCar
+_END;
+		$stmt = $this->database->prepare($sql);
+		$stmt->bindParam(1, $vimCar);
+		$stmt->bindParam(2, $idModel);
+		$stmt->bindParam(3, $bodyType);
+		$stmt->bindParam(4, $power);
+		$stmt->bindParam(5, $cylinderCapacity);
+		$stmt->bindParam(6, $fuel);
+		$stmt->bindParam(7, $transmission);
+		$stmt->bindParam(8, $driveType);
+		$stmt->bindParam(9, $color);
+		$stmt->bindParam(10, $year);
+		$stmt->bindParam(11, $registrationNumber);
+		$stmt->execute();
+		$stmt->close();
+	}
+
 	public function connectClient_Car($values){
 		$idClient=$this->sqlite_fix_string($values['idClient']);
 		$idCar=$this->sqlite_fix_string($values['idCar']);
@@ -270,6 +316,23 @@ _END;
 _END;
 		$result = $this->database->query($sql);
 		return $result->fetchArray(SQLITE3_ASSOC)['brand'];
+	}
+
+	public function getAllDiary()
+	{
+		$sql = 'SELECT * FROM Diary ORDER BY createDate DESC';
+		return $this->database->query($sql);
+	}
+
+	public function getAllDiaryByIdClient($values)
+	{
+		$idClient = $this->sqlite_fix_string($values['idClient']);
+		$sql = <<<_END
+		SELECT * FROM 
+		Diary WHERE idClient=$idClient 
+		ORDER BY createDate DESC
+_END;
+		return $this->database->query($sql);
 	}
 }
 

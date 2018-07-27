@@ -23,6 +23,8 @@ function template($content=""){
                 <a href="addCar.php">addCar</a>
                 <a href="find.php">Find</a>
                 <a href="clients.php">Clients</a>
+                <a href="cars.php">Cars</a>
+                <a href="diary.php">Diary</a>
 			</nav>
             $content
         </body>

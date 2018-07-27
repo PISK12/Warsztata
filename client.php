@@ -17,6 +17,31 @@
 
 
 <?php
+	function getRow($table, $database)
+	{
+		$idCar = $table['idCar'];
+		$sql = <<<_END
+		SELECT idModel FROM cars 
+		WHERE idCar=$idCar
+_END;
+
+		$result = $database->database->query($sql);
+		$data = $result->fetchArray(SQLITE3_ASSOC);
+		$table['idModel'] = $data['idModel'];
+		$html = "";
+		$html = $html . "<tr>";
+		$html = $html . "<td><a href=" . "car.php?idCar=" . $table['idCar'] . ">" . $table['idCar'] . "</a></td>";
+		$html = $html . "<td>" . $database->getBrandByIdModel($table['idModel']) . "</td>";
+		$html = $html . "<td>" . $database->getModelByIdModel($table['idModel']) . "</td>";
+		$html = $html . "<td>" . $table['title'] . "</td>";
+		$html = $html . "<td>" . $table['createDate'] . "</td>";
+		$html = $html . "<td>" . $table['comments'] . "</td>";
+		$html = $html . "<td>" . $table['preference'] . "</td>";
+		$html = $html . "<td>" . $table['price'] . "</td>";
+		$html = $html . "</tr>";
+		return $html;
+	}
+
 	if (isset($_GET['idClient'])) {
 		$database=new Database($fileNameDatabase);
 		$results=$database->getAllInformationAboutClientByIdClient($_GET['idClient']);
@@ -49,8 +74,34 @@
 			$content = $content . "<p>" . 'driveType' . ": " . $table['driveType'] . "</p>";
 			$content = $content . "<p>" . 'color' . ": " . $table['color'] . "</p>";
 			$content = $content . "<p>" . 'year' . ": " . $table['year'] . "</p>";
+
 			$content = $content . "<p>" . 'registrationNumber' . ": " . $table['registrationNumber'] . "</p>";
+			$content = $content . "<a href=" . "car.php?idCar=" . $table['idCar'] . ">Edit Car" . "</a>";
+
 		}
+
+		$results = $database->getAllDiaryByIdClient($_GET);
+		$html = "";
+		while ($table = $results->fetchArray(SQLITE3_ASSOC)) {
+			$html = $html . getRow($table, $database);
+		}
+
+		$content = $content . <<<_END
+	<table>
+		<tr>
+			<th>idCar</th>
+			<th>Brand</th>
+			<th>Model</th>
+			<th>title</th>
+			<th>createDate</th>
+			<th>comments</th>
+			<th>preference</th>
+			<th>price</th>
+		</tr>
+		$html
+	</table>
+_END;
+
 
 	}
 	template($content);
