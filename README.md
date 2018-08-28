@@ -1,2 +1,2 @@
 # Warsztata
-It's system to control for service station, is wrote in pure PHP,
+It's system to control for service station, was wrote in pure PHP,
